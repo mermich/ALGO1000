@@ -8,18 +8,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-   print('Request for index page received')
-   return render_template('index.html')
+    print('Request for index page received')
+    return render_template('index.html')
 
 @app.route('/', methods=['POST'])
 def indexPOST():
-   print('Request for index page received')
-   text = "no"
-   txtUserName = request.form.get('txtUserName')
-   txtPassword = request.form.get('txtPassword')
-   if txtUserName=="admin" and txtPassword=="1234":
-     text = "yes!"
-   return render_template('index.html',text=text)
+    print('Request for index page received')
+    text = "no"
+    txtUserName = request.form.get('txtUserName')
+    txtPassword = request.form.get('txtPassword')
+    if txtUserName == "admin" and txtPassword == "1234":
+        text = "yes!"
+    return render_template('index.html',text=text)
 
 @app.route('/favicon.ico')
 def favicon():
@@ -28,12 +28,12 @@ def favicon():
 
 @app.route('/hello', methods=['POST'])
 def hello():
-   name = request.form.get('name')
+    name = request.form.get('name')
 
-   if name:
+    if name:
        print('Request for hello page received with name=%s' % name)
        return render_template('hello.html', name = name)
-   else:
+    else:
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
 
