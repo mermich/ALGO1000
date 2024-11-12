@@ -11,6 +11,16 @@ def index():
    print('Request for index page received')
    return render_template('index.html')
 
+@app.route('/', methods=['POST'])
+def indexPOST():
+   print('Request for index page received')
+   text = "no"
+   txtUserName = request.form.get('txtUserName')
+   txtPassword = request.form.get('txtPassword')
+   if txtUserName=="admin" and txtPassword=="1234":
+     text = "yes!"
+   return render_template('index.html',text=text)
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
